@@ -12,10 +12,11 @@ _ft_read: ; rdi = fd  | rsi = buf pointer | rdx = size
     syscall
     cmp rax, 9
     je exit
+	mov rsi, r8
     mov rax, 0x2000003
     syscall
+	jc exit
     ret
-
 
 exit:
     mov rax, -1

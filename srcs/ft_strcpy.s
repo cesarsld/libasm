@@ -3,20 +3,21 @@ segment .text
     extern _ft_strlen
 
 _ft_strcpy:
-    cmp rsi, 0 ; compare if source is empty
+    cmp rsi, 0		; compare if source is empty
     je exit
-    push rdi ; stacks rdi address on top of stack
-    mov rdi, rsi ; assign rsi pointer to rdi
+	cmp rdi, 0
+	je exit
+    push rdi		; stacks rdi address on top of stack
+    mov rdi, rsi	; assign rsi pointer to rdi
     call _ft_strlen
-    pop rdi ;put back information of stack in rdi
+	mov rcx, rax
+    pop rdi			;put back information of stack in rdi
+	mov rax, rdi
     cld
     rep movsb
     mov BYTE[rdi], 0
-    sub rdi, rcx
-    mov rax, rdi
     ret
 
 exit:
-    mov BYTE[rdi], 0
     mov rax, rdi
     ret

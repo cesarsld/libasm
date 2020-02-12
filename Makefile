@@ -6,7 +6,7 @@
 #    By: cjaimes <cjaimes@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/06 13:45:30 by cjaimes           #+#    #+#              #
-#    Updated: 2020/01/08 13:24:57 by cjaimes          ###   ########.fr        #
+#    Updated: 2020/02/12 16:35:53 by cjaimes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC			=	ft_strlen.s \
 				ft_strcpy.s \
 				ft_strcmp.s \
 				ft_write.s \
-				ft_strdup.s
+				ft_strdup.s \
+				ft_read.s
 
 
 SRCS		=	${addprefix ${SRC_DIR}, ${SRC}}
@@ -42,7 +43,7 @@ all:	${NAME}
 
 ${OBJ_DIR}%.o :	${SRC_DIR}%.s
 			@mkdir -p ${OBJ_DIR}
-			@/usr/local/bin/nasm -f macho64 $< -o $@
+			@nasm -f macho64 $< -o $@
 			@printf "%-60b\r" "${_CYAN}${ECHO}${_CYAN} Compiling $@"
 
 ${NAME}: ${OBJS}

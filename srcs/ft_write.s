@@ -13,6 +13,7 @@ _ft_write:
     mov rsi, r8
     mov rax, 0x2000004
     syscall
+	jc exit
     ret
 
 exit:
